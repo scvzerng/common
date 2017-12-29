@@ -5,6 +5,7 @@ import com.alibaba.fastjson.JSONObject;
 import com.alibaba.fastjson.TypeReference;
 import com.yazuo.intelligent.common.exception.BusinessException;
 import com.yazuo.intelligent.common.exception.HttpException;
+import com.yazuo.intelligent.common.exception.ValidationException;
 import com.yazuo.intelligent.common.exception.utils.ExceptionUtils;
 import com.yazuo.intelligent.common.response.GenericResponse;
 import feign.FeignException;
@@ -33,6 +34,8 @@ public class CrmFeignDecoder implements Decoder {
             GenericResponse<String> result = JSONObject.parseObject(response.body().asInputStream(), Charset.forName("UTF-8"),        new TypeReference<GenericResponse<String>>(){}.getType());
             if(result.getCode()==200){
                 return JSON.parseObject(result.getData(),type);
+            }else if(result.getCode()==700){
+                throw new ValidationException(result.getDetails());
             }else{
                 BusinessException businessException = new BusinessException(result.getCode(),result.getMessage(),null);
                 businessException.setStackInfo(result.getStackInfo());
