@@ -1,6 +1,6 @@
-package com.yazuo.intelligent.common.exception;
+package com.zero.scvzerng.common.exception;
 
-import com.yazuo.intelligent.common.response.GenericResponse;
+import com.zero.scvzerng.common.response.GenericResponse;
 import lombok.Data;
 
 import java.util.List;

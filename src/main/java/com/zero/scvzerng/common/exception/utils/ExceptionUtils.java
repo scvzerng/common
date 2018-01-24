@@ -1,4 +1,4 @@
-package com.yazuo.intelligent.common.exception.utils;
+package com.zero.scvzerng.common.exception.utils;
 
 
 import java.io.PrintWriter;

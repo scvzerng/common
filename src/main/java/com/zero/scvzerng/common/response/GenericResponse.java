@@ -1,4 +1,4 @@
-package com.yazuo.intelligent.common.response;
+package com.zero.scvzerng.common.response;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;

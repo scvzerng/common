@@ -1,13 +1,13 @@
-package com.yazuo.intelligent.common.feign.decoder;
+package com.zero.scvzerng.common.feign.decoder;
 
 import com.alibaba.fastjson.JSON;
 import com.alibaba.fastjson.JSONObject;
 import com.alibaba.fastjson.TypeReference;
-import com.yazuo.intelligent.common.exception.BusinessException;
-import com.yazuo.intelligent.common.exception.HttpException;
-import com.yazuo.intelligent.common.exception.ValidationException;
-import com.yazuo.intelligent.common.exception.utils.ExceptionUtils;
-import com.yazuo.intelligent.common.response.GenericResponse;
+import com.zero.scvzerng.common.exception.BusinessException;
+import com.zero.scvzerng.common.exception.HttpException;
+import com.zero.scvzerng.common.exception.ValidationException;
+import com.zero.scvzerng.common.exception.utils.ExceptionUtils;
+import com.zero.scvzerng.common.response.GenericResponse;
 import feign.FeignException;
 import feign.Response;
 import feign.codec.DecodeException;
@@ -24,7 +24,7 @@ import java.nio.charset.Charset;
  *
  * @author scvzerng
  **/
-public class CrmFeignDecoder implements Decoder {
+public class FeignDecoder implements Decoder {
     @Override
     public Object decode(Response response, Type type) throws IOException,DecodeException, FeignException {
         if(response.status()!=200){
@@ -40,7 +40,6 @@ public class CrmFeignDecoder implements Decoder {
                 BusinessException businessException = new BusinessException(result.getCode(),result.getMessage(),null);
                 businessException.setStackInfo(result.getStackInfo());
                 businessException.setTradeId(result.getTradeId());
-
                 throw businessException;
             }
         }catch (Exception e){

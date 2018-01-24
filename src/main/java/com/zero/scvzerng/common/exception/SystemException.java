@@ -1,4 +1,4 @@
-package com.yazuo.intelligent.common.exception;
+package com.zero.scvzerng.common.exception;
 
 public class SystemException extends AbstractException {
     public SystemException(Throwable e) {
